@@ -6,25 +6,28 @@ window.onload = function() {
   };
 
 
-// Variables
-// =======================================================
-var game = {
-  correctAnswerCount: 0,
-  incorrectAnswerCount: 0,
-  timeCounter: 20,
-  // timeCounter: 120;
-  // unansweredCount: 0,
-  // userAnswer: '',
-  countDown: function(){
-    game.timeCounter--;
-    $('#counter').html(game.timeCounter);
-    if (game.timeCounter === 0)
-    {
-      console.log('out of time');
-      game.done();
-    }
+// <button type="button" class="btn btn-success">answer 1</button>
+
+// <button type="button" class="btn btn-primary" id = "done-button">Done</button>
+
+ 
+// // Main Process
+// // =======================================================
+
+$('#start-button').on('click', function() {
+  console.log('You clicked #start-button');
+
+  //after user clicks start button
+  $('#start-button').remove();
+
+  for (var i = questions.length - 1; i >= 0; i--) {
+    $('#subwrapper').append('<h2>' + questions[i].question + '</h2>');
+
+      for (var j = questions[i].answers.length - 1; i >= 0; i--) {
+        $('#subwrapper').append("<input type = 'radio' name = 'question-"+i+"' value='"+questions[i].answers[j]+"'>"+questions[i].answers[j])
+      }
+
   }
-};
 
 var questions = [
   {
@@ -57,158 +60,133 @@ var questions = [
   correctAnswer: 'Dr ‘Bones’ McCoy'
   },
 
-  // {
-  // question: '',
-  // answers:[ 'Lt. Worf', 'Mr. Sulu', 'Mr. Spock' ],
-  // correctAnswer: ''
-  // },
+  {
+  question: 'Which series has vocal music with the opening theme?',
+  answers:[ 'Voyager', 'Deep Space Nine', 'Next Generation' ],
+  correctAnswer: 'Enterprise'
+  },
 
-  // {
-  // question: '',
-  // answers:[ 'Lt. Worf', 'Mr. Sulu', 'Mr. Spock' ],
-  // correctAnswer: ''
-  // },
+  {
+  question: 'EMH is another word for which character in Voyager?',
+  answers:[ 'Lt. Worf', 'Mr. Sulu', 'Mr. Spock' ],
+  correctAnswer: 'The Doctor'
+  },
 
-  // {
-  // question: '',
-  // answers:[ 'Lt. Worf', 'Mr. Sulu', 'Mr. Spock' ],
-  // correctAnswer: ''
-  // }
+  {
+  question: 'Which quadrant is Voyager trying to leave?',
+  answers:[ 'Alpha', 'Beta', 'Borg' ],
+  correctAnswer: 'Delta'
+  }
 
   ];
 
 
-// // Functions
-// // =======================================================
-
-function displayCorrectAnswerCount() {
-    alert('This is from the displayCorrectAnswerCount function.');
-//   // $(#goal).html.("Goal Number: " + game.goalNumber);
-//   $('#goal').html("Goal Number: " + game.goalNumber);
-//   // console.log('displayGoalNumber function' + game.goalNumber);
-};
-
-function displayIncorrectAnswerCount() {
-  alert('This is from the displayCorrectAnswerCount function.');
-//   $('#user-number').html("User Number: " + game.userNumber);
-//   console.log('displayUserNumber function');
-};
-
-function displayIncorrectAnswerCount() {
-  alert('This is from the displayUnansweredCount function.');
-//   $('#wins').html("Wins: " + game.winsNumber);
-//   console.log('displayWins function');
-};
-
- 
-// function evaluate() {
-//   console.log('evaluate function');
-
-//   if (game.goalNumber === game.userNumber) {
-//     game.winsNumber++;
-
-//   //display updated score
-//   displayWins();
-//   alert('You won.');
-
-//   start();
-//   }
-
-//   else if (game.userNumber >= game.goalNumber) {
-//   game.lossesNumber++;
-  
-//   //display updated score
-//   displayLosses();
-//   alert('You lost.');
-
-//   start();
-//   }
-
-// };
- 
-// function start() {
-//   console.log('This is from the start function.');
-//   game.userNumber = 0,
+var game = {
+  correctAnswerCount: 0,
+  incorrectAnswerCount: 0,
+  timeCounter: 20,
+  // timeCounter: 120;
+  countDown: function(){
+    game.timeCounter--;
+    $('#counter').html(game.timeCounter);
+    if (game.timeCounter <= 0)
+    {
+      console.log('out of time');
+      game.done();
+    }
+  },
+  start: function() {
 
 
+  },
 
-  // game.correctAnswerCount = 0;
-  // game.incorrectAnswerCount = 0;
-  // game.unansweredCount = 0;
-  // userAnswer: '',
-  
-//   //reset value of crystal ids
-//   game.crystalOneValue = getRandomIntInclusive(1, 12),
-//   $('#crystal-1').val(game.crystalOneValue);
-//   console.log('#crystal-1 = ' + game.crystalOneValue);
+  // Determine if input type is checked.
+  done: function(){
 
-//   displayGoalNumber();
+    $.each($('input[name="question-0]":checked'), function(){
+      if($(this.val===questions[0].correctAnswer){
+        game.correctAnswerCount++;
+      } else {
+        game.incorrectAnswerCount++;
+      }
+    }
 
-//   displayUserNumber();
+    $.each($('input[name="question-1]":checked'), function(){
+      if($(this.val===questions[1].correctAnswer){
+        game.correctAnswerCount++;
+      } else {
+        game.incorrectAnswerCount++;
+      }
+    }
 
-//   displayWins();
+    $.each($('input[name="question-2]":checked'), function(){
+      if($(this.val===questions[2].correctAnswer){
+        game.correctAnswerCount++;
+      } else {
+        game.incorrectAnswerCount++;
+      }
+    }
 
-//   displayLosses();
+    $.each($('input[name="question-3]":checked'), function(){
+      if($(this.val===questions[3].correctAnswer){
+        game.correctAnswerCount++;
+      } else {
+        game.incorrectAnswerCount++;
+      }
+    }
 
-// };
+    $.each($('input[name="question-4]":checked'), function(){
+      if($(this.val===questions[4].correctAnswer){
+        game.correctAnswerCount++;
+      } else {
+        game.incorrectAnswerCount++;
+      }
+    }
 
+    $.each($('input[name="question-5]":checked'), function(){
+      if($(this.val===questions[5].correctAnswer){
+        game.correctAnswerCount++;
+      } else {
+        game.incorrectAnswerCount++;
+      }
+    }
 
+   $.each($('input[name="question-6]":checked'), function(){
+      if($(this.val===questions[6].correctAnswer){
+        game.correctAnswerCount++;
+      } else {
+        game.incorrectAnswerCount++;
+      }
+    }
 
-// <button type="button" class="btn btn-success">answer 1</button>
+  $.each($('input[name="question-7]":checked'), function(){
+      if($(this.val===questions[7].correctAnswer){
+        game.correctAnswerCount++;
+      } else {
+        game.incorrectAnswerCount++;
+      }
+    }
 
-// <button type="button" class="btn btn-primary" id = "done-button">Done</button>
-
- 
-// // Main Process
-// // =======================================================
-
-$('#start-button').on('click', function() {
-  console.log('You clicked #start-button');
-
-  //after user clicks start button
-  $('#start-button').remove();
-
-  for (var i = questions.length - 1; i >= 0; i--) {
-    $('#subwrapper').append('<h2>' + questions[i].question + '</h2>');
-
-      for (var j = questions.[i].answers.length - 1; i >= 0; i--) {
-        $('#subwrapper').append("<input type = 'radio' name = 'question-" +i + "' value='" +questions[i].answers[j]+"'>"+questions[i].answers[j])
+  )
 
   }
+};
 
+this.result();
 
-//   game.userNumber = game.userNumber + game.crystalOneValue;
-//   displayUserNumber();
-//   evaluate();
-  });
-
-
-
-$('#done-button').on('click', function() {
-  console.log('You clicked #done-button');
-//   game.userNumber = game.userNumber + game.crystalOneValue;
-//   displayUserNumber();
-//   evaluate();
-  });
-
-
-this.results();
-},
-
+// Show results of game.
 result: function(){
   clearInterval(timer);
+
+  // Remove timer.
   $('#subwrapper h2').remove();
 
-  $('#subwrapper').append('<h3>')
+  // 
+  $('#subwrapper').html("<h2>all done</h2>")
 
-}
+  $('#subwrapper').append("<h3>Correct Answers: "+this.correct+"</h3>");
+  $('#subwrapper').append("<h3>Incorrect Answers: "+this.incorrect+"</h3>");
 
-
-
-// displayGoalNumber();
-
-// displayUserNumber();
-
-// displayWins();
-
-// displayLosses();
+  // Calculate and show unanswered
+  $('#subwrapper').append("<h3>Unanswered: "+(questions.length - (this.incorrectAnswerCount + this.correctAnswerCount))+"</h3>");
+})
