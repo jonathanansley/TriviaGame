@@ -1,18 +1,12 @@
 // This code will run as soon as the page loads
-window.onload = function() {
-  // alert('JavaScript file - window.onload');
-  // restart();
+// window.onload = function() {
+//   // alert('JavaScript file - window.onload');
 
-  };
-
+//   };
 
 // <button type="button" class="btn btn-success">answer 1</button>
 
 // <button type="button" class="btn btn-primary" id = "done-button">Done</button>
-
- 
-// // Main Process
-// // =======================================================
 
 $('#start-button').on('click', function() {
   console.log('You clicked #start-button');
@@ -20,14 +14,24 @@ $('#start-button').on('click', function() {
   //after user clicks start button
   $('#start-button').remove();
 
+  // Append each question to subwrapper.
   for (var i = questions.length - 1; i >= 0; i--) {
     $('#subwrapper').append('<h2>' + questions[i].question + '</h2>');
 
+      // Storing values in with buttons
       for (var j = questions[i].answers.length - 1; i >= 0; i--) {
+      
         $('#subwrapper').append("<input type = 'radio' name = 'question-"+i+"' value='"+questions[i].answers[j]+"'>"+questions[i].answers[j])
-      }
 
-  }
+      } // end of sub-for loop
+
+  } // end of for loop
+
+  }); // end of start button listener
+
+$(document).on('click', '#end', function(){
+  game.done();
+ });
 
 var questions = [
   {
@@ -84,8 +88,10 @@ var questions = [
 var game = {
   correctAnswerCount: 0,
   incorrectAnswerCount: 0,
+
   timeCounter: 20,
   // timeCounter: 120;
+
   countDown: function(){
     game.timeCounter--;
     $('#counter').html(game.timeCounter);
@@ -94,83 +100,84 @@ var game = {
       console.log('out of time');
       game.done();
     }
-  },
+  }, //end of countDown function
+
   start: function() {
-
-
+    console.log('start function');
   },
 
   // Determine if input type is checked.
   done: function(){
 
     $.each($('input[name="question-0]":checked'), function(){
-      if($(this.val===questions[0].correctAnswer){
+      if($(this.val()===questions[0].correctAnswer){
         game.correctAnswerCount++;
       } else {
         game.incorrectAnswerCount++;
       }
-    }
+    } //end of function
+    );
 
-    $.each($('input[name="question-1]":checked'), function(){
-      if($(this.val===questions[1].correctAnswer){
-        game.correctAnswerCount++;
-      } else {
-        game.incorrectAnswerCount++;
-      }
-    }
+  //   $.each($('input[name="question-1]":checked'), function(){
+  //     if($(this.val()===questions[1].correctAnswer){
+  //       game.correctAnswerCount++;
+  //     } else {
+  //       game.incorrectAnswerCount++;
+  //     }
+  //   }
 
-    $.each($('input[name="question-2]":checked'), function(){
-      if($(this.val===questions[2].correctAnswer){
-        game.correctAnswerCount++;
-      } else {
-        game.incorrectAnswerCount++;
-      }
-    }
+  //   $.each($('input[name="question-2]":checked'), function(){
+  //     if($(this.val()===questions[2].correctAnswer){
+  //       game.correctAnswerCount++;
+  //     } else {
+  //       game.incorrectAnswerCount++;
+  //     }
+  //   }
 
-    $.each($('input[name="question-3]":checked'), function(){
-      if($(this.val===questions[3].correctAnswer){
-        game.correctAnswerCount++;
-      } else {
-        game.incorrectAnswerCount++;
-      }
-    }
+  //   $.each($('input[name="question-3]":checked'), function(){
+  //     if($(this.val()===questions[3].correctAnswer){
+  //       game.correctAnswerCount++;
+  //     } else {
+  //       game.incorrectAnswerCount++;
+  //     }
+  //   }
 
-    $.each($('input[name="question-4]":checked'), function(){
-      if($(this.val===questions[4].correctAnswer){
-        game.correctAnswerCount++;
-      } else {
-        game.incorrectAnswerCount++;
-      }
-    }
+  //   $.each($('input[name="question-4]":checked'), function(){
+  //     if($(this.val()===questions[4].correctAnswer){
+  //       game.correctAnswerCount++;
+  //     } else {
+  //       game.incorrectAnswerCount++;
+  //     }
+  //   }
 
-    $.each($('input[name="question-5]":checked'), function(){
-      if($(this.val===questions[5].correctAnswer){
-        game.correctAnswerCount++;
-      } else {
-        game.incorrectAnswerCount++;
-      }
-    }
+  //   $.each($('input[name="question-5]":checked'), function(){
+  //     if($(this.val()===questions[5].correctAnswer){
+  //       game.correctAnswerCount++;
+  //     } else {
+  //       game.incorrectAnswerCount++;
+  //     }
+  //   }
 
-   $.each($('input[name="question-6]":checked'), function(){
-      if($(this.val===questions[6].correctAnswer){
-        game.correctAnswerCount++;
-      } else {
-        game.incorrectAnswerCount++;
-      }
-    }
+  //  $.each($('input[name="question-6]":checked'), function(){
+  //     if($(this.val()===questions[6].correctAnswer){
+  //       game.correctAnswerCount++;
+  //     } else {
+  //       game.incorrectAnswerCount++;
+  //     }
+  //   }
 
-  $.each($('input[name="question-7]":checked'), function(){
-      if($(this.val===questions[7].correctAnswer){
-        game.correctAnswerCount++;
-      } else {
-        game.incorrectAnswerCount++;
-      }
-    }
+  // $.each($('input[name="question-7]":checked'), function(){
+  //     if($(this.val()===questions[7].correctAnswer){
+  //       game.correctAnswerCount++;
+  //     } else {
+  //       game.incorrectAnswerCount++;
+  //     }
+  //   }
 
-  )
+//   )
 
-  }
-};
+//   }
+}; // end of game object
 
 this.result();
 
@@ -189,4 +196,6 @@ result: function(){
 
   // Calculate and show unanswered
   $('#subwrapper').append("<h3>Unanswered: "+(questions.length - (this.incorrectAnswerCount + this.correctAnswerCount))+"</h3>");
-})
+} // end of result function
+
+)
