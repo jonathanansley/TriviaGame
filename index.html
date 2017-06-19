@@ -6,7 +6,7 @@
 
   <meta charset="UTF-8">
 
-  <title>Trivia Game | Jonathan Ansley</title>
+  <title>Star Trek Trivia Game | Jonathan Ansley</title>
 
   <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
 
@@ -20,76 +20,28 @@
 
   <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
-  <!-- Added link to the jQuery Library -->
-  <!-- <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script> -->
-
 </head>
 
 <body>
 
-  <h1>Totally Trivia Trivia</h1>
+<div id = "wrapper">
 
-  <h2>click a crystal</h2>
+  <div class="jumbotron">
+    <h1 id = "title">Star Trek Trivia</h1>
+  </div>
 
-<p>
-  The player wins if their total score matches the random number from the beginning of the game.
-</p>
+<div id = "subwrapper">
+    <p><a class="btn btn-primary btn-lg" id = "start-button" href="#" role="button">Start</a></p>
+<div id = "subwrapper">
 
-<p>
-   * You'll create a trivia form with multiple choice or true/false options (your choice).
-
-* The player will have a limited amount of time to finish the quiz. 
-
-  * The game ends when the time runs out. The page will reveal the number of questions that players answer correctly and incorrectly.
-
-* Don't let the player pick more than one answer per question.
-
-* Don't forget to include a countdown timer.
-
-### Option Two: Advanced Assignment (Timed Questions)
-
-
-</p>
-
-<p>
-     * When the game begins again, the player should see a new random number. Also, all the crystals will have four new hidden values. Of course, the user's score (and score counter) will reset to zero.
-</p>
-
-  <p id="goal"></p>
-
-  <p id="user-number"></p>
-
-  <p id="wins"></p>
-
-  <p id="losses"></p>
-
-  <!-- crystals -->
-      <div id="wrapper">
-
-      <!-- Div containing our controls -->
-      <div id="crystals">
-        <img id = "crystal-1" class = "crystal-image" src = "http://www.minerals.net/MineralImages/realgar-shimen-hunan-china.jpg" alt="picture of crystal-1">
-
-        <img id = "crystal-2" class = "crystal-image" src = "https://upload.wikimedia.org/wikipedia/commons/5/55/Malachite,_Zaire.jpg" alt="picture of crystal-2">
-
-        <img id = "crystal-3" class = "crystal-image" src = "http://2.bp.blogspot.com/-idB6juF_F0Q/TuOFrB_u6eI/AAAAAAAAARs/hNGF9crwA0I/s1600/DSC_0247.JPG" alt="picture of crystal-3">
-
-        
-        <img id = "crystal-4" class = "crystal-image" src = "http://www.pxleyes.com/images/contests/crystal/fullsize/crystal_4babd8c756356_hires.jpg" alt="picture of crystal-4">
-
-<!--         <button id="crystal-1">crystal #1</button>
-        <button id="crystal-2">crystal #2</button>
-        <button id="crystal-3">crystal #3</button>
-        <button id="crystal-4">crystal #4</button>
- -->      </div>
-
-    </div>
-
-  <!-- jQuery -->
+ <!-- jQuery -->
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.js"></script>
 
   <!-- Script -->
   <script type="text/javascript" src="assets/javascript/app.js"></script>
+
+</div>
+<!-- end of wrapper div -->
 
 </body>
 
